@@ -161,8 +161,9 @@ async function fetchGLB(url) {
         if (contentLength) {
             const networkProgress = receivedLength / contentLength;
             const progressScaled = networkProgress * 89;
-            const variableWidth = 500 + (progressScaled / 89) * 300;
-            document.documentElement.style.setProperty('--headline-width', variableWidth);
+            // Mona Sans wght axis 200–900; ease from medium → black while the GLB streams
+            const variableWidth = Math.round(500 + (progressScaled / 89) * 400);
+            document.documentElement.style.setProperty('--headline-width', String(variableWidth));
             setProgress(progressScaled);
         }
     }
