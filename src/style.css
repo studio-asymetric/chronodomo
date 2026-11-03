@@ -1,14 +1,6 @@
-@font-face {
-    font-family: 'Mona Sans';
-    src: url('/fonts/MonaSansVF-Regular.woff2') format('woff2 supports variations'),
-         url('/fonts/MonaSansVF-Regular.woff2') format('woff2-variations');
-    font-weight: 200 900;
-    font-stretch: 75% 125%;
-    font-display: swap;
-}
-
 :root {
-    --headline-width: 500;
+    /* Synonym wght axis is 200–700 — drive loader type along this range */
+    --headline-width: 200;
     --cubic-bezier: cubic-bezier(.28, .87, .35, 1);
     --page-pad: 3rem;
     --left-col: 30rem;
@@ -117,7 +109,7 @@ canvas {
 }
 
 #headline {
-    font-family: 'Mona Sans', sans-serif;
+    font-family: 'Synonym-Variable', sans-serif;
     font-size: 13vw;
     font-weight: var(--headline-width);
     font-variation-settings: 'wght' var(--headline-width);
@@ -143,7 +135,7 @@ canvas {
 }
 
 #progressText {
-    font-family: 'Mona Sans', sans-serif;
+    font-family: 'Synonym-Variable', sans-serif;
     font-size: 14vw;
     font-weight: var(--headline-width);
     font-variation-settings: 'wght' var(--headline-width);

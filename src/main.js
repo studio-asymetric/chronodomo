@@ -161,8 +161,8 @@ async function fetchGLB(url) {
         if (contentLength) {
             const networkProgress = receivedLength / contentLength;
             const progressScaled = networkProgress * 89;
-            // Mona Sans wght axis 200–900; ease from medium → black while the GLB streams
-            const variableWidth = Math.round(500 + (progressScaled / 89) * 400);
+            // Synonym-Variable wght axis is 200–700 — thicken from ExtraLight → Bold while GLB streams
+            const variableWidth = Math.round(200 + (progressScaled / 89) * 500);
             document.documentElement.style.setProperty('--headline-width', String(variableWidth));
             setProgress(progressScaled);
         }
