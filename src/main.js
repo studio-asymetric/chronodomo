@@ -20,11 +20,30 @@ const progressBar = document.getElementById('progressInner');
 const progressText = document.getElementById('progressText');
 const progressContainer = document.getElementById('progressContainer');
 
+// Synonym-Variable wght axis is 200–700. The file often arrives in a few
+// chunks, so the target jumps; the displayed weight eases so the in-between
+// weights actually render instead of snapping to Bold.
+const WGHT_MIN = 200;
+const WGHT_MAX = 700;
+let targetWght = WGHT_MIN;
+let shownWght = WGHT_MIN;
+
 function setProgress(percent) {
     const clamped = Math.max(0, Math.min(percent, 100));
     progressBar.style.width = clamped + '%';
     progressText.textContent = `${Math.round(clamped)}%`;
+    targetWght = WGHT_MIN + (clamped / 100) * (WGHT_MAX - WGHT_MIN);
 }
+
+function animateHeadlineWeight() {
+    const delta = targetWght - shownWght;
+    if (Math.abs(delta) > 0.2) {
+        shownWght += Math.sign(delta) * Math.min(Math.abs(delta), 3.2);
+        document.documentElement.style.setProperty('--headline-width', shownWght.toFixed(1));
+    }
+    requestAnimationFrame(animateHeadlineWeight);
+}
+requestAnimationFrame(animateHeadlineWeight);
 
 
 /**************************************************
@@ -160,11 +179,7 @@ async function fetchGLB(url) {
 
         if (contentLength) {
             const networkProgress = receivedLength / contentLength;
-            const progressScaled = networkProgress * 89;
-            // Synonym-Variable wght axis is 200–700 — thicken from ExtraLight → Bold while GLB streams
-            const variableWidth = Math.round(200 + (progressScaled / 89) * 500);
-            document.documentElement.style.setProperty('--headline-width', String(variableWidth));
-            setProgress(progressScaled);
+            setProgress(networkProgress * 89);
         }
     }
 
