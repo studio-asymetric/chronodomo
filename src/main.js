@@ -317,6 +317,7 @@ async function loadModel() {
             progressContainer.classList.add('loaded');
             canvasContainer.classList.add('loaded');
             modeSwitcher.classList.add('loaded');
+            document.querySelector('.about-link')?.classList.add('loaded');
             computeTotalScrollSpace();
         }, 500);
 

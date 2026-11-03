@@ -75,7 +75,7 @@ Mobile (&lt;740px): epoch bodies slide in via the **+** control on each section 
 
 - Epochs are `<article>` blocks inside `#canvas-container` with date + title in `.meta` and body in `.content`.
 - CSS variables `--page-pad`, `--left-col`, `--timeline-left` keep body copy **left of** the dashed `.timeline` rule.
-- Footer (`About Chronodōmō`) credits Dalibor Itze / Studio Asymetric, with links to the studio and this repo.
+- **About** is a separate page (`/about`), opened from the button on the experience. It credits Dalibor Itze / Studio Asymetric and links to the studio and this repo.
 
 ### Assets (`public/`)
 
