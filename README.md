@@ -1,5 +1,9 @@
 # Chronodōmō
 
+<p align="center">
+  <img src="public/social/og.jpg" alt="Chronodōmō — Pre-Romanesque house" width="880">
+</p>
+
 Interactive 3D scroll experience: one building across five European architectural epochs — Pre-Romanesque, Romanesque, Gothic, Renaissance, and Baroque.
 
 **Live:** https://chronodomo.com  
@@ -7,6 +11,14 @@ Interactive 3D scroll experience: one building across five European architectura
 **Author:** Dalibor Itze
 
 Stack: **Vite** · **Three.js** · **Lenis** · **nginx** (Docker)
+
+<p align="center">
+  <img src="public/social/epoch-gothic.jpg" alt="Gothic epoch" width="280">
+  &nbsp;
+  <img src="public/social/epoch-renaissance.jpg" alt="Renaissance epoch" width="280">
+  &nbsp;
+  <img src="public/social/epoch-baroque.jpg" alt="Baroque epoch" width="280">
+</p>
 
 ---
 
@@ -48,7 +60,7 @@ Over ~5s with cubic ease-out:
 - Document height comes from `#canvas-container` (~`800svh` of scrollable content).
 - Each frame: `progress = scrollY / (scrollHeight - viewport)`.
 - That progress maps onto the remaining animation frames after the intro segment.
-- Mixer action times are set directly (not left running freely), so scrubbing scroll scrubbing the morph.
+- Mixer action times are set directly (not left running freely), so scrubbing scroll scrubs the morph.
 
 ### Modes
 
@@ -63,7 +75,7 @@ Mobile (&lt;740px): epoch bodies slide in via the **+** control on each section 
 
 - Epochs are `<article>` blocks inside `#canvas-container` with date + title in `.meta` and body in `.content`.
 - CSS variables `--page-pad`, `--left-col`, `--timeline-left` keep body copy **left of** the dashed `.timeline` rule.
-- Footer (`About Chronodōmō`) sits after Baroque with links to the studio and this repo.
+- Footer (`About Chronodōmō`) credits Dalibor Itze / Studio Asymetric, with links to the studio and this repo.
 
 ### Assets (`public/`)
 
@@ -74,6 +86,10 @@ Mobile (&lt;740px): epoch bodies slide in via the **+** control on each section 
 | `models/ground.glb` | Ground plane / landscape |
 | `fonts/*` | Synonym + Mona Sans |
 | `img/timeline.svg` | Vertical dashed ruler |
+| `social/og.jpg` | Open Graph / share still (Pre-Romanesque) |
+| `social/share-1x1.jpg` | Square share / apple-touch |
+| `social/epoch-*.jpg` | README stills (Gothic → Baroque) |
+| `logo.svg` | Wordmark |
 
 ---
 
