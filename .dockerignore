@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+.git
+.cursor
+*.log
+*.local
+.DS_Store
+README.md
+.env
+.env.*

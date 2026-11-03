@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chronodōmō — 900 Years of European Architecture in One Scroll</title>
+    <meta name="description" content="An interactive 3D journey through 900 years of European architecture. Scroll to watch one building evolve from Pre-Romanesque fortifications to Baroque grandeur — Pre-Romanesque, Romanesque, Gothic, Renaissance, and Baroque.">
+    <meta name="keywords" content="Chronodōmō, architecture history, European architecture, Pre-Romanesque, Romanesque, Gothic, Renaissance, Baroque, interactive 3D, scroll animation, architectural timeline">
+    <meta name="author" content="Dalibor Itze">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#a2cac3">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chronodomo.com/">
+    <meta property="og:title" content="Chronodōmō — 900 Years of Architecture in One Scroll">
+    <meta property="og:description" content="Scroll through 900 years of European architecture. One building, five epochs — from medieval fortresses to Baroque splendour, rendered in real-time 3D.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Chronodōmō">
+    <link rel="canonical" href="https://chronodomo.com/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Chronodōmō — 900 Years of Architecture in One Scroll">
+    <meta name="twitter:description" content="Scroll through 900 years of European architecture. One building, five epochs — rendered in real-time 3D.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Chronodōmō",
+        "url": "https://chronodomo.com/",
+        "description": "An interactive 3D experience that animates a single building through five architectural epochs — Pre-Romanesque, Romanesque, Gothic, Renaissance, and Baroque — driven by scroll.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "creator": {
+            "@type": "Person",
+            "name": "Dalibor Itze",
+            "url": "https://byitze.com"
+        },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="preload" href="fonts/MonaSansVF-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="prefetch" href="models/ground.glb">
+    <link rel="prefetch" href="models/clipping.glb">
+</head>
+
+<body id="top">
+
+    <!-- Progress UI -->
+    <div id="canvasBackground"></div>
+    <div id="canvasForeground"></div>
+    <div id="progressContainer">
+        <div id="headline">chronodōmō</div>
+        <div id="progressBar">
+            <div id="progressInner"></div>
+        </div>
+        <div id="progressText">0%</div>
+    </div>
+
+    <div class="timeline"></div>
+
+    <!-- Switcher UI -->
+    <div class="mode-switcher">
+        <div class="switch-background"></div>
+        <button id="scroll-mode" class="switch-button active">Scroll</button>
+        <button id="view-mode" class="switch-button">View</button>
+    </div>
+
+
+    <div id="canvas-container">
+        <canvas id="webgl-canvas"></canvas>
+
+        <article id="intro">
+            <div class="meta">
+                <h2 class="date">#</h2>
+                <h2>What's Chronodōmō</h2>
+            </div>
+            <div class="content">
+                <p>
+                    Architecture is a story told through stone, wood, and glass. It evolves over centuries, shaped by culture, technology, and human ambition. Chronodōmō brings this transformation to life, animating a single building as it shifts through architectural epochs.
+                    From the fortified simplicity of early medieval structures to the grandeur of Baroque, this project visualizes how architectural styles reflect their time, needs, and ideals.
+                </p>
+            </div>
+        </article>
+
+        <article id="preromanesque">
+            <div class="meta">
+                <h2 class="date">~900</h2>
+                <h2 class="headline">Pre-Romanesque</h2>
+                <img class="meta-plus" src="public/img/plus.svg" alt="">
+            </div>
+            <div class="content">
+                <p>
+                    Early medieval buildings were simple and built to last. Thick stone walls and wooden roofs kept people safe and warm, but there wasn’t much decoration. Windows were tiny, and buildings felt more like forts than homes. It was all about survival—nothing
+                    fancy, just strong and practical.
+                </p>
+            </div>
+        </article>
+
+        <article id="romanesque">
+            <div class="meta">
+                <h2 class="date">~1000</h2>
+                <h2 class="headline">Romanesque</h2>
+                <img class="meta-plus" src="public/img/plus.svg" alt="">
+            </div>
+            <div class="content">
+                <p>
+                    As life became more stable, buildings grew bigger and stronger. Romanesque architecture used thick stone walls, round arches, and small windows. Churches and castles looked solid and heavy, built to protect people inside. Carvings and simple decorations
+                    started to appear, hinting at a growing interest in art.
+                </p>
+            </div>
+        </article>
+
+        <article id="gothic">
+            <div class="meta">
+                <h2 class="date">~1200</h2>
+                <h2 class="headline">Gothic</h2>
+                <img class="meta-plus" src="public/img/plus.svg" alt="">
+            </div>
+            <div class="content">
+                <p>
+                    Gothic buildings were tall, light, and full of details. Pointed arches and huge stained glass windows replaced heavy stone walls. Flying buttresses helped support taller buildings, allowing churches and cathedrals to reach for the sky. Architecture became
+                    more about beauty and emotion, not just function.
+                </p>
+            </div>
+        </article>
+
+        <article id="renaissance">
+            <div class="meta">
+                <h2 class="date">~1500</h2>
+                <h2 class="headline">Renaissance</h2>
+                <img class="meta-plus" src="public/img/plus.svg" alt="">
+            </div>
+            <div class="content">
+                <p>
+                    The Renaissance brought back the balance and order of ancient Greek and Roman buildings. Architects focused on symmetry, columns, and domes. Castles became more like elegant homes, built for comfort instead of defense. The goal was to create spaces that felt grand but peaceful, reflecting a love for knowledge and art.
+                </p>
+            </div>
+        </article>
+
+        <article id="baroque">
+            <div class="meta">
+                <h2 class="date">~1600</h2>
+                <h2 class="headline">Baroque</h2>
+                <img class="meta-plus" src="public/img/plus.svg" alt="">
+            </div>
+            <div class="content">
+                <p>
+                    Baroque architecture was all about drama and impressing people. Buildings had curved walls, huge domes, and rich decorations. Light and shadow played a big role, making everything feel more alive. These buildings weren’t just places to live or pray—they were meant to make people stop and stare.
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

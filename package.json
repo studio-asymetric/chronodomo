@@ -1,0 +1,19 @@
+{
+  "name": "chronodomo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.5"
+  },
+  "dependencies": {
+    "lenis": "^1.1.20",
+    "three": "^0.172.0",
+    "three-bvh-csg": "^0.0.16"
+  }
+}

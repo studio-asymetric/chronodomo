@@ -1,0 +1,15 @@
+{
+  "name": "Chronodōmō",
+  "short_name": "Chronodōmō",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#a2cac3",
+  "background_color": "#a2cac3",
+  "display": "standalone"
+}
